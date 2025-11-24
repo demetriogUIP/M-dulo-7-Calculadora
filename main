@@ -1,42 +1,79 @@
+"""
+Módulo: Main
+Descripción: Programa principal de la calculadora interactiva.
+             Solicita números al usuario, permite elegir operaciones
+             y muestra los resultados.
+"""
+
 import Operaciones
 
+
 def calculadora():
-    while True: 
+    """
+    Función principal que ejecuta la calculadora interactiva.
+
+    Permite al usuario realizar múltiples operaciones matemáticas
+    (suma, resta, multiplicación, división) de forma consecutiva
+    hasta que decida salir.
+    """
+    # Bucle principal que mantiene la calculadora ejecutándose
+    while True:
         print("Calculadora")
-        while True: 
+
+        # Bucle de validación para asegurar que los inputs son numéricos
+        while True:
             try:
+                # Solicitar el primer número al usuario
                 num1 = float(input("PorFavor ingresa el primer valor: "))
+                # Solicitar el segundo número al usuario
                 num2 = float(input("PorFavor ingresa el segundo valor: "))
-                break 
+                # Si ambos valores son válidos, salir del bucle de validación
+                break
             except ValueError:
+                # Si el usuario ingresa un valor no numérico, mostrar error y repetir
                 print("Error. Porfavor solo introduce valores numericos.")
 
+        # Solicitar al usuario que elija la operación deseada
         opcion = input("Introduce la opción deseada (1, 2, 3 o 4): ")
 
-        try:  
+        # Bloque try-except para manejar errores en las operaciones (ej: división por cero)
+        try:
+            # Opción 1: Suma
             if opcion == '1':
                 resultado = Operaciones.sumar(num1, num2)
                 operacion_simbolo = "+"
+            # Opción 2: Resta
             elif opcion == '2':
                 resultado = Operaciones.restar(num1, num2)
                 operacion_simbolo = "-"
+            # Opción 3: Multiplicación
             elif opcion == '3':
                 resultado = Operaciones.multiplicar(num1, num2)
                 operacion_simbolo = "*"
+            # Opción 4: División
             elif opcion == '4':
                 resultado = Operaciones.dividir(num1, num2)
                 operacion_simbolo = "/"
+            # Si la opción no es válida (no es 1, 2, 3 o 4)
             else:
                 print("\nError. Opcion seleccionada incorrecta.")
+                # Volver al inicio del bucle principal para empezar de nuevo
                 continue
 
+            # Mostrar el resultado de la operación realizada
             print(f"\nEl resultado de {num1} {operacion_simbolo} {num2} es: {resultado}")
         except ValueError as e:
-            print(e)  #
+            # Capturar y mostrar cualquier error de valor (como división por cero)
+            print(e)
 
-        continuar = input("¿Deseas realizar otra operación? (s/n): ") 
-        if continuar.lower() != "s": 
+        # Preguntar al usuario si desea realizar otra operación
+        continuar = input("¿Deseas realizar otra operación? (s/n): ")
+        # Si la respuesta no es 's' (mayúscula o minúscula), salir del bucle
+        if continuar.lower() != "s":
             break
 
+
+# Punto de entrada del programa
+# Este bloque solo se ejecuta cuando se corre directamente este archivo
 if __name__ == "__main__":
     calculadora()
