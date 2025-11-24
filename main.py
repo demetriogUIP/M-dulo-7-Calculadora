@@ -33,8 +33,15 @@ def calculadora():
                 # Si el usuario ingresa un valor no numérico, mostrar error y repetir
                 print("Error. Porfavor solo introduce valores numericos.")
 
+        # Mostrar el menú de opciones disponibles
+        print("\nSelecciona la operación que deseas realizar:")
+        print("1. Suma")
+        print("2. Resta")
+        print("3. Multiplicación")
+        print("4. División")
+
         # Solicitar al usuario que elija la operación deseada
-        opcion = input("Introduce la opción deseada (1, 2, 3 o 4): ")
+        opcion = input("\nIntroduce la opción deseada (1, 2, 3 o 4): ")
 
         # Bloque try-except para manejar errores en las operaciones (ej: división por cero)
         try:
