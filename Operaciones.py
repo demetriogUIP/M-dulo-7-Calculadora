@@ -16,6 +16,7 @@ def sumar(a, b):
     Retorna:
         float | int: Resultado de a + b.
     """
+    # Realizar la operación de suma y retornar el resultado
     return a + b
 
 
@@ -30,6 +31,7 @@ def restar(a, b):
     Retorna:
         float | int: Resultado de a - b.
     """
+    # Realizar la operación de resta y retornar el resultado
     return a - b
 
 
@@ -44,6 +46,7 @@ def multiplicar(a, b):
     Retorna:
         float | int: Resultado de a * b.
     """
+    # Realizar la operación de multiplicación y retornar el resultado
     return a * b
 
 
@@ -71,14 +74,19 @@ def dividir(a, b):
 if __name__ == "__main__":
     print("Pruebas rápidas del módulo Operaciones:\n")
 
+    # Definir valores de prueba
     x, y = 10, 5
 
+    # Probar cada función con los valores definidos
     print(f"sumar({x}, {y}) = {sumar(x, y)}")
     print(f"restar({x}, {y}) = {restar(x, y)}")
     print(f"multiplicar({x}, {y}) = {multiplicar(x, y)}")
 
+    # Probar la función de división, incluyendo caso de error
     try:
         print(f"dividir({x}, {y}) = {dividir(x, y)}")
-        print(f"dividir({x}, 0) = {dividir(x, 0)}")  # Esto debe lanzar un error
+        # Intentar dividir por cero para probar el manejo de errores
+        print(f"dividir({x}, 0) = {dividir(x, 0)}")
     except ValueError as e:
+        # Capturar y mostrar el error de división por cero
         print(e)
